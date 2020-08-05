@@ -1,0 +1,23 @@
+
+<div class="container">
+<h4>
+<a routerLink='/home'>Home</a>&nbsp;&nbsp;&nbsp;
+<a routerLink='/student'>Student</a>&nbsp;&nbsp;&nbsp;
+<a routerLink='/staff'>Staff</a> </h4>
+<br><br><br>
+
+
+<!-- <input type="text"  [(ngModel)]="typed" > 
+<button  (click)='btn()' class="btn btn-success">clickMe</button>
+<br>
+User Typed:{{typed}}
+<br><br> -->
+<input  type="text"  [(ngModel)]="ip" (keyup)='enter($event)'  /> 
+<button  (click)='add()' class="btn btn-success">add</button>
+{{result}}
+<ul><li *ngFor= "let i of result" >{{i}}<button (click)='remove(i)' class="btn btn-danger">X</button><br><br></li></ul> 
+<br> <br> <br>
+<router-outlet></router-outlet>
+</div>
+
+
