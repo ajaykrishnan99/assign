@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
-  
+export class AppComponent implements OnInit {
+  signupForm:FormGroup;
   typed=" ";
   title = 'app1';
   ip=" ";
@@ -52,7 +53,15 @@ export class AppComponent  {
   
    }
    
-
+   ngOnInit(){
+    this.signupForm=new FormGroup({
+      'username':new FormControl(null,Validators.required),'email': new FormControl(null,[Validators.required,Validators.email])
+    });
+   }
+   onsubmit(){
+     console.log(this.signupForm);
+     if(this.signupForm.valid==true){alert("Form Submitted");}
+   }
 
    
 
