@@ -7,22 +7,27 @@
 <br><br><br>
 
 
-<!-- <input type="text"  [(ngModel)]="typed" > 
-<button  (click)='btn()' class="btn btn-success">clickMe</button>
-<br>
-User Typed:{{typed}}
-<br><br> -->
+
 <h4>To DO List</h4>
 <p>You can give Enter key for  submitting rather than add button</p>
-<input  type="text"  [(ngModel)]="ip" (keyup)='enter($event)'  > 
+
+<!-- used event binding , on keyup the enter function is called -->
+
+<input  type="text"  [(ngModel)]="ip" (keyup)='enter($event)'  >  
 <button  (click)='add()' class="btn btn-success">add</button>
+
+<!-- Displaying output using string interpolation -->
 {{result}}
+
+<!-- Adding  List on every user click and displaying it -->
 <ul><li *ngFor= "let i of result" >{{i}}<button (click)='remove(i)' class="btn btn-danger">X</button><br><br></li></ul> 
 <br> <br> <br>
+
+<!-- routing content visible here -->
 <router-outlet></router-outlet><br><br><br>
 
 
-
+<!-- TEMPLATE FORM -->
 
 <!-- <form (ngSubmit)="onsubmit(f)" #f=ngForm>
     <div class="form-group" >
@@ -34,14 +39,19 @@ User Typed:{{typed}}
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">submit</button>
 </form> -->
+
+
+<!-- Reactive form -->
 <h4>REACTIVE FORM VALIDATION</h4><br>
 <form [formGroup]="signupForm"  (ngSubmit)="onsubmit()">
     <div class="form-group" >
        <input type="text" class="form-control"  name="username" formControlName="username" placeholder="Enter Username">
+       <!-- Displaying the span if orm is not valid -->
        <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched " class="help-block" >Please enter a valid username!!</span>
     </div>
     <div class="form-group" >
         <input type="email" class="form-control"  name="email" formControlName="email" placeholder="Enter Email">
+          <!-- Displaying the span if orm is not valid -->
         <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched " class="help-block" >Please enter a valid email!!</span>
     </div>
     <button type="submit">submit</button>
